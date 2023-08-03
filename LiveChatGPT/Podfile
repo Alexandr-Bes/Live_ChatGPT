@@ -1,0 +1,20 @@
+# Uncomment the next line to define a global platform for your project
+# platform :ios, '9.0'
+
+target 'LiveChatGPT' do
+  use_frameworks!
+
+  # Pods for LiveChatGPT
+
+  pod 'SwiftLint', '~> 0.52.4' # Swift style guide
+
+  target 'LiveChatGPTTests' do
+    inherit! :search_paths
+    # Pods for testing
+  end
+
+  target 'LiveChatGPTUITests' do
+    # Pods for testing
+  end
+
+end
