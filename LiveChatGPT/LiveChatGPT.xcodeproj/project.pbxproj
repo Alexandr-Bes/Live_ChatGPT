@@ -15,6 +15,10 @@
 		1C60E5732A7AC46400C6C59C /* LiveChatGPTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E5722A7AC46400C6C59C /* LiveChatGPTTests.swift */; };
 		1C60E57D2A7AC46400C6C59C /* LiveChatGPTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E57C2A7AC46400C6C59C /* LiveChatGPTUITests.swift */; };
 		1C60E57F2A7AC46400C6C59C /* LiveChatGPTUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E57E2A7AC46400C6C59C /* LiveChatGPTUITestsLaunchTests.swift */; };
+		1C8A43F52A93C3DA00BA4465 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A43F42A93C3DA00BA4465 /* ChatViewModel.swift */; };
+		1C8A43F82A93C44800BA4465 /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A43F72A93C44800BA4465 /* APIWorker.swift */; };
+		1CB47B1F2A7C5CB6007FE145 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1CB47B212A7C5CB6007FE145 /* Localizable.strings */; };
+		1CB47B252A7C5E2F007FE145 /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB47B242A7C5E2F007FE145 /* String+ext.swift */; };
 		30AE6CB9429402F3BF407439 /* Pods_LiveChatGPT_LiveChatGPTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA8F1253376F02D47D9395B /* Pods_LiveChatGPT_LiveChatGPTUITests.framework */; };
 		3996D49E67EE3F8EDCC16AB2 /* Pods_LiveChatGPTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0866AA80837C34C2DC9C89 /* Pods_LiveChatGPTTests.framework */; };
 /* End PBXBuildFile section */
@@ -47,6 +51,10 @@
 		1C60E5782A7AC46400C6C59C /* LiveChatGPTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveChatGPTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C60E57C2A7AC46400C6C59C /* LiveChatGPTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatGPTUITests.swift; sourceTree = "<group>"; };
 		1C60E57E2A7AC46400C6C59C /* LiveChatGPTUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatGPTUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1C8A43F42A93C3DA00BA4465 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
+		1C8A43F72A93C44800BA4465 /* APIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
+		1CB47B202A7C5CB6007FE145 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
+		1CB47B242A7C5E2F007FE145 /* String+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
 		26378E2A85CE03111EB04DF1 /* Pods-LiveChatGPTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveChatGPTTests.release.xcconfig"; path = "Target Support Files/Pods-LiveChatGPTTests/Pods-LiveChatGPTTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B9A3F209E7E9572E318E541 /* Pods-LiveChatGPT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveChatGPT.release.xcconfig"; path = "Target Support Files/Pods-LiveChatGPT/Pods-LiveChatGPT.release.xcconfig"; sourceTree = "<group>"; };
 		896391DE891E689695387BEA /* Pods_LiveChatGPT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveChatGPT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -112,8 +120,11 @@
 			isa = PBXGroup;
 			children = (
 				1C60E5612A7AC45E00C6C59C /* LiveChatGPTApp.swift */,
-				1C60E5632A7AC45E00C6C59C /* ContentView.swift */,
-				1C60E5652A7AC46300C6C59C /* Assets.xcassets */,
+				1C8A43F62A93C3EB00BA4465 /* API */,
+				1C8A43F22A93C32600BA4465 /* Chat */,
+				1C8A43F92A93C5D100BA4465 /* Config */,
+				1CB47B232A7C5DC5007FE145 /* Extensions */,
+				1CB47B1C2A7C5C6A007FE145 /* Support Files */,
 				1C60E5672A7AC46300C6C59C /* Preview Content */,
 			);
 			path = LiveChatGPT;
@@ -142,6 +153,55 @@
 				1C60E57E2A7AC46400C6C59C /* LiveChatGPTUITestsLaunchTests.swift */,
 			);
 			path = LiveChatGPTUITests;
+			sourceTree = "<group>";
+		};
+		1C8A43F22A93C32600BA4465 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				1C60E5632A7AC45E00C6C59C /* ContentView.swift */,
+				1C8A43F42A93C3DA00BA4465 /* ChatViewModel.swift */,
+			);
+			path = Chat;
+			sourceTree = "<group>";
+		};
+		1C8A43F62A93C3EB00BA4465 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				1C8A43F72A93C44800BA4465 /* APIWorker.swift */,
+			);
+			path = API;
+			sourceTree = "<group>";
+		};
+		1C8A43F92A93C5D100BA4465 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
+		1CB47B1C2A7C5C6A007FE145 /* Support Files */ = {
+			isa = PBXGroup;
+			children = (
+				1C60E5652A7AC46300C6C59C /* Assets.xcassets */,
+				1CB47B222A7C5CC5007FE145 /* Localizations */,
+			);
+			path = "Support Files";
+			sourceTree = "<group>";
+		};
+		1CB47B222A7C5CC5007FE145 /* Localizations */ = {
+			isa = PBXGroup;
+			children = (
+				1CB47B212A7C5CB6007FE145 /* Localizable.strings */,
+			);
+			path = Localizations;
+			sourceTree = "<group>";
+		};
+		1CB47B232A7C5DC5007FE145 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				1CB47B242A7C5E2F007FE145 /* String+ext.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		368C5F8ACB08227E7A08BF17 /* Frameworks */ = {
@@ -178,7 +238,7 @@
 				1C60E55A2A7AC45E00C6C59C /* Sources */,
 				1C60E55B2A7AC45E00C6C59C /* Frameworks */,
 				1C60E55C2A7AC45E00C6C59C /* Resources */,
-				1CB47B1B2A7C1711007FE145 /* ShellScript */,
+				1CB47B1B2A7C1711007FE145 /* SwiftLint */,
 			);
 			buildRules = (
 			);
@@ -276,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C60E5692A7AC46300C6C59C /* Preview Assets.xcassets in Resources */,
+				1CB47B1F2A7C5CB6007FE145 /* Localizable.strings in Resources */,
 				1C60E5662A7AC46300C6C59C /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -297,7 +358,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		1CB47B1B2A7C1711007FE145 /* ShellScript */ = {
+		1CB47B1B2A7C1711007FE145 /* SwiftLint */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -306,6 +367,7 @@
 			);
 			inputPaths = (
 			);
+			name = SwiftLint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -388,7 +450,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				1C60E5642A7AC45E00C6C59C /* ContentView.swift in Sources */,
+				1CB47B252A7C5E2F007FE145 /* String+ext.swift in Sources */,
+				1C8A43F52A93C3DA00BA4465 /* ChatViewModel.swift in Sources */,
 				1C60E5622A7AC45E00C6C59C /* LiveChatGPTApp.swift in Sources */,
+				1C8A43F82A93C44800BA4465 /* APIWorker.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -423,6 +488,17 @@
 			targetProxy = 1C60E5792A7AC46400C6C59C /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		1CB47B212A7C5CB6007FE145 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				1CB47B202A7C5CB6007FE145 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		1C60E5802A7AC46400C6C59C /* Debug */ = {
