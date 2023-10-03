@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		1AB1F734D46FB1176BE8E125 /* Pods_LiveChatGPT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 896391DE891E689695387BEA /* Pods_LiveChatGPT.framework */; };
+		1C0D07AD2ACC83A1000128A2 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D07AC2ACC83A1000128A2 /* MessageView.swift */; };
+		1C0D07AF2ACC8712000128A2 /* TextEditorWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D07AE2ACC8712000128A2 /* TextEditorWithPlaceholder.swift */; };
+		1C0D07B12ACC885F000128A2 /* View+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D07B02ACC885F000128A2 /* View+ext.swift */; };
 		1C60E5622A7AC45E00C6C59C /* LiveChatGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E5612A7AC45E00C6C59C /* LiveChatGPTApp.swift */; };
 		1C60E5642A7AC45E00C6C59C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E5632A7AC45E00C6C59C /* ContentView.swift */; };
 		1C60E5662A7AC46300C6C59C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C60E5652A7AC46300C6C59C /* Assets.xcassets */; };
@@ -19,6 +22,8 @@
 		1C8A43F82A93C44800BA4465 /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A43F72A93C44800BA4465 /* APIWorker.swift */; };
 		1CB47B1F2A7C5CB6007FE145 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1CB47B212A7C5CB6007FE145 /* Localizable.strings */; };
 		1CB47B252A7C5E2F007FE145 /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB47B242A7C5E2F007FE145 /* String+ext.swift */; };
+		1CE779362ABCAA3700C377DB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE779352ABCAA3700C377DB /* AppConstants.swift */; };
+		1CE779382ABCAAB200C377DB /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE779372ABCAAB200C377DB /* AppRepository.swift */; };
 		30AE6CB9429402F3BF407439 /* Pods_LiveChatGPT_LiveChatGPTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA8F1253376F02D47D9395B /* Pods_LiveChatGPT_LiveChatGPTUITests.framework */; };
 		3996D49E67EE3F8EDCC16AB2 /* Pods_LiveChatGPTTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AE0866AA80837C34C2DC9C89 /* Pods_LiveChatGPTTests.framework */; };
 /* End PBXBuildFile section */
@@ -41,6 +46,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C0D07AC2ACC83A1000128A2 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
+		1C0D07AE2ACC8712000128A2 /* TextEditorWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorWithPlaceholder.swift; sourceTree = "<group>"; };
+		1C0D07B02ACC885F000128A2 /* View+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ext.swift"; sourceTree = "<group>"; };
 		1C60E55E2A7AC45E00C6C59C /* LiveChatGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveChatGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C60E5612A7AC45E00C6C59C /* LiveChatGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatGPTApp.swift; sourceTree = "<group>"; };
 		1C60E5632A7AC45E00C6C59C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -55,6 +63,8 @@
 		1C8A43F72A93C44800BA4465 /* APIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
 		1CB47B202A7C5CB6007FE145 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1CB47B242A7C5E2F007FE145 /* String+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
+		1CE779352ABCAA3700C377DB /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
+		1CE779372ABCAAB200C377DB /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		26378E2A85CE03111EB04DF1 /* Pods-LiveChatGPTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveChatGPTTests.release.xcconfig"; path = "Target Support Files/Pods-LiveChatGPTTests/Pods-LiveChatGPTTests.release.xcconfig"; sourceTree = "<group>"; };
 		7B9A3F209E7E9572E318E541 /* Pods-LiveChatGPT.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveChatGPT.release.xcconfig"; path = "Target Support Files/Pods-LiveChatGPT/Pods-LiveChatGPT.release.xcconfig"; sourceTree = "<group>"; };
 		896391DE891E689695387BEA /* Pods_LiveChatGPT.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_LiveChatGPT.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -159,6 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				1C60E5632A7AC45E00C6C59C /* ContentView.swift */,
+				1C0D07AE2ACC8712000128A2 /* TextEditorWithPlaceholder.swift */,
+				1C0D07AC2ACC83A1000128A2 /* MessageView.swift */,
 				1C8A43F42A93C3DA00BA4465 /* ChatViewModel.swift */,
 			);
 			path = Chat;
@@ -175,6 +187,8 @@
 		1C8A43F92A93C5D100BA4465 /* Config */ = {
 			isa = PBXGroup;
 			children = (
+				1CE779352ABCAA3700C377DB /* AppConstants.swift */,
+				1CE779372ABCAAB200C377DB /* AppRepository.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -200,6 +214,7 @@
 			isa = PBXGroup;
 			children = (
 				1CB47B242A7C5E2F007FE145 /* String+ext.swift */,
+				1C0D07B02ACC885F000128A2 /* View+ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -449,8 +464,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1CE779382ABCAAB200C377DB /* AppRepository.swift in Sources */,
 				1C60E5642A7AC45E00C6C59C /* ContentView.swift in Sources */,
+				1C0D07B12ACC885F000128A2 /* View+ext.swift in Sources */,
+				1CE779362ABCAA3700C377DB /* AppConstants.swift in Sources */,
+				1C0D07AF2ACC8712000128A2 /* TextEditorWithPlaceholder.swift in Sources */,
 				1CB47B252A7C5E2F007FE145 /* String+ext.swift in Sources */,
+				1C0D07AD2ACC83A1000128A2 /* MessageView.swift in Sources */,
 				1C8A43F52A93C3DA00BA4465 /* ChatViewModel.swift in Sources */,
 				1C60E5622A7AC45E00C6C59C /* LiveChatGPTApp.swift in Sources */,
 				1C8A43F82A93C44800BA4465 /* APIWorker.swift in Sources */,
@@ -632,7 +652,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -663,7 +683,7 @@
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

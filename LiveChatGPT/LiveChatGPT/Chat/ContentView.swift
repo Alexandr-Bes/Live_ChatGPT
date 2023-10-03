@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct ContentView1: View {
     @ObservedObject var viewModel = ChatViewModel()
     
     @State private var pulsate = false
@@ -50,11 +50,63 @@ struct ContentView: View {
     }
 }
 
-// Text("MainView.HelloMessage.Title".localized)
-
 
 struct ContentView_Previews: PreviewProvider {
     static var previews: some View {
         ContentView()
+    }
+}
+
+struct ContentView: View {
+    @State var text = ""
+    @ObservedObject var connector = OpenAIConnector()
+    var body: some View {
+        ZStack {
+            backgroundGradient()
+            
+            VStack {
+                ScrollView {
+                    ForEach(connector.messageLog) { message in
+                        MessageView(message: message)
+                    }
+                }
+                
+                HStack {
+                    TextField("Type your question", text: $text)
+                        .frame(minHeight: 30)
+                        .padding()
+                        .background(Color.white)
+                        .clipShape(RoundedRectangle(cornerRadius: 8))
+                    
+                    Button {
+                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
+                        connector.logMessage(text, messageUserType: .user)
+                        connector.sendToAssistant()
+                        text = ""
+                        print("Typed message: \(text)")
+                    } label: {
+                        ZStack {
+                            Circle()
+                                .foregroundStyle(Color.blue.opacity(0.8))
+                            
+                            Image(systemName: "paperplane")
+                                .resizable()
+                                .renderingMode(.template)
+                                .frame(width: 25, height: 25)
+                                .foregroundStyle(Color.white)
+                                .padding([.top, .trailing], 2)
+                        }
+                        .frame(width: 38, height: 38)
+                    }
+                }
+                
+            }.padding()
+        }
+    }
+    
+    @ViewBuilder private func backgroundGradient() -> some View {
+        // swiftlint:disable:next line_length
+        RadialGradient(gradient: Gradient(colors: [Color.yellow, .mint, Color.blue]), center: .center, startRadius: 2, endRadius: 500)
+        .scaleEffect(1.2)
     }
 }
