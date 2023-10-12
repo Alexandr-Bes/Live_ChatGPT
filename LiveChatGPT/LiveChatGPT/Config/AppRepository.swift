@@ -8,5 +8,5 @@
 import Foundation
 
 class AppRepository {
-    private lazy var apiWorker = APIWorker(apiKey: Constants.apiKey.rawValue)
+    private lazy var apiWorker = APIWorker(apiKey: Environment.apiKey)
 }

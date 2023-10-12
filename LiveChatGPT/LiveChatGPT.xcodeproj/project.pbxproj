@@ -11,6 +11,7 @@
 		1C0D07AD2ACC83A1000128A2 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D07AC2ACC83A1000128A2 /* MessageView.swift */; };
 		1C0D07AF2ACC8712000128A2 /* TextEditorWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D07AE2ACC8712000128A2 /* TextEditorWithPlaceholder.swift */; };
 		1C0D07B12ACC885F000128A2 /* View+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D07B02ACC885F000128A2 /* View+ext.swift */; };
+		1C577F372ACDF5F0009BE829 /* Codable+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C577F362ACDF5F0009BE829 /* Codable+ext.swift */; };
 		1C60E5622A7AC45E00C6C59C /* LiveChatGPTApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E5612A7AC45E00C6C59C /* LiveChatGPTApp.swift */; };
 		1C60E5642A7AC45E00C6C59C /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E5632A7AC45E00C6C59C /* ContentView.swift */; };
 		1C60E5662A7AC46300C6C59C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1C60E5652A7AC46300C6C59C /* Assets.xcassets */; };
@@ -18,6 +19,7 @@
 		1C60E5732A7AC46400C6C59C /* LiveChatGPTTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E5722A7AC46400C6C59C /* LiveChatGPTTests.swift */; };
 		1C60E57D2A7AC46400C6C59C /* LiveChatGPTUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E57C2A7AC46400C6C59C /* LiveChatGPTUITests.swift */; };
 		1C60E57F2A7AC46400C6C59C /* LiveChatGPTUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C60E57E2A7AC46400C6C59C /* LiveChatGPTUITestsLaunchTests.swift */; };
+		1C62BFAC2ACF21CD006D7FB4 /* Environment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C62BFAB2ACF21CD006D7FB4 /* Environment.swift */; };
 		1C8A43F52A93C3DA00BA4465 /* ChatViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A43F42A93C3DA00BA4465 /* ChatViewModel.swift */; };
 		1C8A43F82A93C44800BA4465 /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A43F72A93C44800BA4465 /* APIWorker.swift */; };
 		1CB47B1F2A7C5CB6007FE145 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1CB47B212A7C5CB6007FE145 /* Localizable.strings */; };
@@ -49,6 +51,7 @@
 		1C0D07AC2ACC83A1000128A2 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		1C0D07AE2ACC8712000128A2 /* TextEditorWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorWithPlaceholder.swift; sourceTree = "<group>"; };
 		1C0D07B02ACC885F000128A2 /* View+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ext.swift"; sourceTree = "<group>"; };
+		1C577F362ACDF5F0009BE829 /* Codable+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Codable+ext.swift"; sourceTree = "<group>"; };
 		1C60E55E2A7AC45E00C6C59C /* LiveChatGPT.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = LiveChatGPT.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C60E5612A7AC45E00C6C59C /* LiveChatGPTApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatGPTApp.swift; sourceTree = "<group>"; };
 		1C60E5632A7AC45E00C6C59C /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -59,6 +62,8 @@
 		1C60E5782A7AC46400C6C59C /* LiveChatGPTUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = LiveChatGPTUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		1C60E57C2A7AC46400C6C59C /* LiveChatGPTUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatGPTUITests.swift; sourceTree = "<group>"; };
 		1C60E57E2A7AC46400C6C59C /* LiveChatGPTUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveChatGPTUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		1C62BFAB2ACF21CD006D7FB4 /* Environment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Environment.swift; sourceTree = "<group>"; };
+		1C62BFAE2ACF6981006D7FB4 /* DebugConfig.xcconfig */ = {isa = PBXFileReference; lastKnownFileType = text.xcconfig; path = DebugConfig.xcconfig; sourceTree = "<group>"; };
 		1C8A43F42A93C3DA00BA4465 /* ChatViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewModel.swift; sourceTree = "<group>"; };
 		1C8A43F72A93C44800BA4465 /* APIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
 		1CB47B202A7C5CB6007FE145 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
@@ -189,6 +194,7 @@
 			children = (
 				1CE779352ABCAA3700C377DB /* AppConstants.swift */,
 				1CE779372ABCAAB200C377DB /* AppRepository.swift */,
+				1C62BFAB2ACF21CD006D7FB4 /* Environment.swift */,
 			);
 			path = Config;
 			sourceTree = "<group>";
@@ -198,6 +204,7 @@
 			children = (
 				1C60E5652A7AC46300C6C59C /* Assets.xcassets */,
 				1CB47B222A7C5CC5007FE145 /* Localizations */,
+				1C62BFAE2ACF6981006D7FB4 /* DebugConfig.xcconfig */,
 			);
 			path = "Support Files";
 			sourceTree = "<group>";
@@ -215,6 +222,7 @@
 			children = (
 				1CB47B242A7C5E2F007FE145 /* String+ext.swift */,
 				1C0D07B02ACC885F000128A2 /* View+ext.swift */,
+				1C577F362ACDF5F0009BE829 /* Codable+ext.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -469,7 +477,9 @@
 				1C0D07B12ACC885F000128A2 /* View+ext.swift in Sources */,
 				1CE779362ABCAA3700C377DB /* AppConstants.swift in Sources */,
 				1C0D07AF2ACC8712000128A2 /* TextEditorWithPlaceholder.swift in Sources */,
+				1C577F372ACDF5F0009BE829 /* Codable+ext.swift in Sources */,
 				1CB47B252A7C5E2F007FE145 /* String+ext.swift in Sources */,
+				1C62BFAC2ACF21CD006D7FB4 /* Environment.swift in Sources */,
 				1C0D07AD2ACC83A1000128A2 /* MessageView.swift in Sources */,
 				1C8A43F52A93C3DA00BA4465 /* ChatViewModel.swift in Sources */,
 				1C60E5622A7AC45E00C6C59C /* LiveChatGPTApp.swift in Sources */,
@@ -523,6 +533,7 @@
 /* Begin XCBuildConfiguration section */
 		1C60E5802A7AC46400C6C59C /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C62BFAE2ACF6981006D7FB4 /* DebugConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -571,18 +582,20 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		1C60E5812A7AC46400C6C59C /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 1C62BFAE2ACF6981006D7FB4 /* DebugConfig.xcconfig */;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_ANALYZER_NONNULL = YES;
@@ -625,12 +638,13 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
+				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -647,6 +661,7 @@
 				DEVELOPMENT_TEAM = 663DYMD95T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveChatGPT/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -678,6 +693,7 @@
 				DEVELOPMENT_TEAM = 663DYMD95T;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = LiveChatGPT/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

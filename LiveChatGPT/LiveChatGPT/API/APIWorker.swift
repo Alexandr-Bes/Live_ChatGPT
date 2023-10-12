@@ -26,16 +26,17 @@ import Combine
 
 class OpenAIConnector: ObservableObject {
     
-    let openAIURL = URL(string: Constants.openAIEndpoint.rawValue)
-    let openAIKey = Constants.apiKey.rawValue
+    let openAIURL = URL(string: Environment.baseURL)
+    let openAIKey = Environment.apiKey
     
     @Published var messageLog: [[String: String]] = [
-        ["role": "assistant", "content": "Hello! How can I help you?"],
-        ["role": "user", "content": "You're a friendly, helpful assistant"]
+//        ["role": "assistant", "content": "Hello! How can I help you?"],
+//        ["role": "user", "content": "You're a friendly, helpful assistant"]
     ]
 
     func sendToAssistant() {
-        var request = URLRequest(url: self.openAIURL!)
+        guard let url = URL(string: Environment.baseURL) else { return }
+        var request = URLRequest(url: url)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
         request.addValue("Bearer \(self.openAIKey)", forHTTPHeaderField: "Authorization")
@@ -49,7 +50,6 @@ class OpenAIConnector: ObservableObject {
         var httpBodyJson: Data?
 
         do {
-//            httpBodyJson = try JSONEncoder().encode(httpBody)
             httpBodyJson = try JSONSerialization.data(withJSONObject: httpBody, options: .prettyPrinted)
         } catch {
             print("Unable to convert to JSON \(error)")
@@ -58,14 +58,26 @@ class OpenAIConnector: ObservableObject {
         
         request.httpBody = httpBodyJson
         
-        if let requestData = executeRequest(request: request, withSessionConfig: nil) {
-            let jsonStr = String(data: requestData, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-            print(jsonStr)
-            let responseHandler = OpenAIResponseHandler()
-            logMessage((responseHandler.decodeJson(jsonString: jsonStr)?.choices[0].message["content"])!, messageUserType: .assistant)
+        if let requestData = executeRequest(request: request) {
+            guard let jsonString = String(data: requestData, encoding: .utf8)
+            else {
+                return
+            }
+            print(jsonString)
+            
+            guard let responseData = try? OpenAIResponse.decode(data: requestData) 
+            else {
+                guard let error = try? ErrorModel.decode(data: requestData) else {
+                    // TODO: - Handle error
+                    return
+                }
+                logMessage(error.message ?? "", messageUserType: .assistant)
+                return
+            }
+            
+            logMessage((responseData.choices[0].message["content"])!, messageUserType: .assistant)
         }
 
-        
     }
 }
 
@@ -75,20 +87,19 @@ extension Array: Identifiable { public var id: UUID { UUID() } }
 extension String: Identifiable { public var id: UUID { UUID() } }
 
 extension OpenAIConnector {
-    private func executeRequest(request: URLRequest, withSessionConfig sessionConfig: URLSessionConfiguration?) -> Data? {
+    private func executeRequest(request: URLRequest) -> Data? {
         let semaphore = DispatchSemaphore(value: 0)
-        let session: URLSession
-        if let sessionConfig = sessionConfig {
-            session = URLSession(configuration: sessionConfig)
-        } else {
-            session = URLSession.shared
-        }
-        var requestData: Data?
-        let task = session.dataTask(with: request as URLRequest) { (data: Data?, response: URLResponse?, error: Error?) -> Void in
-            if error != nil {
-                print("error: \(error!.localizedDescription): \(error!.localizedDescription)")
-            } else if data != nil {
-                requestData = data
+        let session = URLSession.shared
+        
+        var responseData: Data?
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+            }
+            
+            if let data = data {
+                responseData = data
             }
             
             print("Semaphore signalled")
@@ -101,7 +112,8 @@ extension OpenAIConnector {
         print("Waiting for semaphore signal")
         let retVal = semaphore.wait(timeout: timeout)
         print("Done waiting, obtained - \(retVal)")
-        return requestData
+        
+        return responseData
     }
 }
 
@@ -124,23 +136,6 @@ extension OpenAIConnector {
     }
 }
 
-struct OpenAIResponseHandler {
-    func decodeJson(jsonString: String) -> OpenAIResponse? {
-        let json = jsonString.data(using: .utf8)!
-        
-        let decoder = JSONDecoder()
-        do {
-            let product = try decoder.decode(OpenAIResponse.self, from: json)
-            return product
-            
-        } catch {
-            print("Error decoding OpenAI API Response -- \(error)")
-        }
-        
-        return nil
-    }
-}
-
 struct OpenAIResponse: Codable {
     var id: String?
     var object: String?
@@ -160,4 +155,32 @@ struct Usage: Codable {
     var promptTokens: Int?
     var completionTokens: Int?
     var totalTokens: Int?
+}
+
+
+
+struct ErrorModel: Codable {
+    let message: String?
+    let type: String?
+    let code: String?
+    
+    init(from decoder: Decoder) throws {
+        let errorData = try ErrorRawResponse(from: decoder)
+        self.message = errorData.error.message
+        self.type = errorData.error.type
+        self.code = errorData.error.code
+//        self.message = try container.decodeIfPresent(String.self, forKey: .message)
+//        self.type = try container.decodeIfPresent(String.self, forKey: .type)
+//        self.code = try container.decodeIfPresent(String.self, forKey: .code)
+    }
+}
+
+struct ErrorRawResponse: Codable {
+    let error: ErrorData
+    
+    struct ErrorData: Codable {
+        let message: String?
+        let type: String?
+        let code: String?
+    }
 }

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CHATGPT_API_KEY</key>
+	<string>$(CHATGPT_API_KEY)</string>
+	<key>OPEN_AI_ENDPOINT</key>
+	<string>https://$(OPEN_AI_ENDPOINT)</string>
+</dict>
+</plist>

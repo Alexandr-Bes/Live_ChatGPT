@@ -14,7 +14,7 @@ struct MessageView: View {
         if message["role"] == "user" {
             return .blue
         } else if message["role"] == "assistant" {
-            return .gray
+            return .green
         } else {
             return .red
         }
@@ -33,7 +33,7 @@ struct MessageView: View {
                     .padding()
                     .background(messageColor)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
-                    .shadow(radius: 2)
+                    .shadow(radius: 1)
                 
                 if message["role"] == "assistant" {
                     Spacer()
@@ -44,5 +44,5 @@ struct MessageView: View {
 }
 
 #Preview {
-    MessageView(message: ["role": "user", "content": "Hello world"])
+    MessageView(message: ["role": "assistant", "content": "Hello world"])
 }
