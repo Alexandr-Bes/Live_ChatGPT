@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @ObservedObject var connector = OpenAIConnector()
-    @State var text = ""
+//    @State var text = ""
     
     @FocusState private var isFocused: Bool
     
@@ -41,50 +41,7 @@ struct ContentView: View {
                     }
                 }
                 
-                HStack {
-                    TextField("Type your question", text: $text)
-                        .frame(minHeight: 30)
-                        .padding()
-                        .background(Color.white)
-                        .clipShape(RoundedRectangle(cornerRadius: 8))
-                        .focused($isFocused)
-                        .onTapGesture {
-                            isFocused = true
-                            startAnimatingText()
-                        }
-                        .onChange(of: isFocused) {
-                            if !isFocused && connector.messageLog.isEmpty {
-                                alreadyAnimated = false
-                                withAnimation {
-//                                    pulsate = true
-//                                    showWaves = true
-                                    revealedText = ""
-                                    isAnimating = false
-                                }
-                            }
-                        }
-                    
-                    Button {
-                        UIImpactFeedbackGenerator(style: .medium).impactOccurred()
-                        connector.logMessage(text, messageUserType: .user)
-                        connector.sendToAssistant()
-                        text = ""
-                        print("Typed message: \(text)")
-                    } label: {
-                        ZStack {
-                            Circle()
-                                .foregroundStyle(Color.blue.opacity(0.8))
-                            
-                            Image(systemName: "paperplane")
-                                .resizable()
-                                .renderingMode(.template)
-                                .frame(width: 25, height: 25)
-                                .foregroundStyle(Color.white)
-                                .padding([.top, .trailing], 2)
-                        }
-                        .frame(width: 38, height: 38)
-                    }
-                }
+               bottomView()
                 
             }.padding()
         }
@@ -131,6 +88,29 @@ struct ContentView: View {
                     .foregroundColor(.black)
                     .transition(.opacity)
                     .animation(.easeInOut(duration: 0.2), value: isAnimating)
+            }
+        }
+    }
+    
+    @ViewBuilder private func bottomView() -> some View {
+        ChatBottomView(isFocused: _isFocused) { text in
+            connector.logMessage(text, messageUserType: .user)
+            connector.sendToAssistant()
+            print("Typed message: \(text)")
+        } textFieldAction: {
+            startAnimatingText()
+        } pickImageAction: {
+            let _ = print("pickImageAction")
+        }
+        .onChange(of: isFocused) {
+            if !isFocused && connector.messageLog.isEmpty {
+                alreadyAnimated = false
+                withAnimation {
+//                                    pulsate = true
+//                                    showWaves = true
+                    revealedText = ""
+                    isAnimating = false
+                }
             }
         }
     }

@@ -24,6 +24,8 @@
 		1C8A43F82A93C44800BA4465 /* APIWorker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C8A43F72A93C44800BA4465 /* APIWorker.swift */; };
 		1CB47B1F2A7C5CB6007FE145 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 1CB47B212A7C5CB6007FE145 /* Localizable.strings */; };
 		1CB47B252A7C5E2F007FE145 /* String+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CB47B242A7C5E2F007FE145 /* String+ext.swift */; };
+		1CBD7A682AD851E60010EB84 /* TextRecognitionHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBD7A672AD851E60010EB84 /* TextRecognitionHandler.swift */; };
+		1CBD7A6A2AD85EDF0010EB84 /* ChatBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBD7A692AD85EDF0010EB84 /* ChatBottomView.swift */; };
 		1CE779362ABCAA3700C377DB /* AppConstants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE779352ABCAA3700C377DB /* AppConstants.swift */; };
 		1CE779382ABCAAB200C377DB /* AppRepository.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CE779372ABCAAB200C377DB /* AppRepository.swift */; };
 		30AE6CB9429402F3BF407439 /* Pods_LiveChatGPT_LiveChatGPTUITests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FFA8F1253376F02D47D9395B /* Pods_LiveChatGPT_LiveChatGPTUITests.framework */; };
@@ -68,6 +70,8 @@
 		1C8A43F72A93C44800BA4465 /* APIWorker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APIWorker.swift; sourceTree = "<group>"; };
 		1CB47B202A7C5CB6007FE145 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		1CB47B242A7C5E2F007FE145 /* String+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+ext.swift"; sourceTree = "<group>"; };
+		1CBD7A672AD851E60010EB84 /* TextRecognitionHandler.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextRecognitionHandler.swift; sourceTree = "<group>"; };
+		1CBD7A692AD85EDF0010EB84 /* ChatBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatBottomView.swift; sourceTree = "<group>"; };
 		1CE779352ABCAA3700C377DB /* AppConstants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConstants.swift; sourceTree = "<group>"; };
 		1CE779372ABCAAB200C377DB /* AppRepository.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppRepository.swift; sourceTree = "<group>"; };
 		26378E2A85CE03111EB04DF1 /* Pods-LiveChatGPTTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-LiveChatGPTTests.release.xcconfig"; path = "Target Support Files/Pods-LiveChatGPTTests/Pods-LiveChatGPTTests.release.xcconfig"; sourceTree = "<group>"; };
@@ -138,6 +142,7 @@
 				1C8A43F62A93C3EB00BA4465 /* API */,
 				1C8A43F22A93C32600BA4465 /* Chat */,
 				1C8A43F92A93C5D100BA4465 /* Config */,
+				1CBD7A662AD851BA0010EB84 /* Utils */,
 				1CB47B232A7C5DC5007FE145 /* Extensions */,
 				1CB47B1C2A7C5C6A007FE145 /* Support Files */,
 				1C60E5672A7AC46300C6C59C /* Preview Content */,
@@ -174,6 +179,7 @@
 			isa = PBXGroup;
 			children = (
 				1C60E5632A7AC45E00C6C59C /* ContentView.swift */,
+				1CBD7A692AD85EDF0010EB84 /* ChatBottomView.swift */,
 				1C0D07AE2ACC8712000128A2 /* TextEditorWithPlaceholder.swift */,
 				1C0D07AC2ACC83A1000128A2 /* MessageView.swift */,
 				1C8A43F42A93C3DA00BA4465 /* ChatViewModel.swift */,
@@ -225,6 +231,14 @@
 				1C577F362ACDF5F0009BE829 /* Codable+ext.swift */,
 			);
 			path = Extensions;
+			sourceTree = "<group>";
+		};
+		1CBD7A662AD851BA0010EB84 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1CBD7A672AD851E60010EB84 /* TextRecognitionHandler.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		368C5F8ACB08227E7A08BF17 /* Frameworks */ = {
@@ -476,8 +490,10 @@
 				1C60E5642A7AC45E00C6C59C /* ContentView.swift in Sources */,
 				1C0D07B12ACC885F000128A2 /* View+ext.swift in Sources */,
 				1CE779362ABCAA3700C377DB /* AppConstants.swift in Sources */,
+				1CBD7A682AD851E60010EB84 /* TextRecognitionHandler.swift in Sources */,
 				1C0D07AF2ACC8712000128A2 /* TextEditorWithPlaceholder.swift in Sources */,
 				1C577F372ACDF5F0009BE829 /* Codable+ext.swift in Sources */,
+				1CBD7A6A2AD85EDF0010EB84 /* ChatBottomView.swift in Sources */,
 				1CB47B252A7C5E2F007FE145 /* String+ext.swift in Sources */,
 				1C62BFAC2ACF21CD006D7FB4 /* Environment.swift in Sources */,
 				1C0D07AD2ACC83A1000128A2 /* MessageView.swift in Sources */,
