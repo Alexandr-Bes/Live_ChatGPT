@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1AB1F734D46FB1176BE8E125 /* Pods_LiveChatGPT.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 896391DE891E689695387BEA /* Pods_LiveChatGPT.framework */; };
+		1C08740C2AF2D78D00F1BA42 /* MessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C08740B2AF2D78D00F1BA42 /* MessageModel.swift */; };
+		1C08740E2AF2EDF800F1BA42 /* OpenAIDataMapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C08740D2AF2EDF800F1BA42 /* OpenAIDataMapper.swift */; };
 		1C0D07AD2ACC83A1000128A2 /* MessageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D07AC2ACC83A1000128A2 /* MessageView.swift */; };
 		1C0D07AF2ACC8712000128A2 /* TextEditorWithPlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D07AE2ACC8712000128A2 /* TextEditorWithPlaceholder.swift */; };
 		1C0D07B12ACC885F000128A2 /* View+ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C0D07B02ACC885F000128A2 /* View+ext.swift */; };
@@ -50,6 +52,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1C08740B2AF2D78D00F1BA42 /* MessageModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageModel.swift; sourceTree = "<group>"; };
+		1C08740D2AF2EDF800F1BA42 /* OpenAIDataMapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenAIDataMapper.swift; sourceTree = "<group>"; };
 		1C0D07AC2ACC83A1000128A2 /* MessageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageView.swift; sourceTree = "<group>"; };
 		1C0D07AE2ACC8712000128A2 /* TextEditorWithPlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEditorWithPlaceholder.swift; sourceTree = "<group>"; };
 		1C0D07B02ACC885F000128A2 /* View+ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+ext.swift"; sourceTree = "<group>"; };
@@ -113,6 +117,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1C08740A2AF2D77700F1BA42 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				1C08740B2AF2D78D00F1BA42 /* MessageModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 		1C60E5552A7AC45E00C6C59C = {
 			isa = PBXGroup;
 			children = (
@@ -141,6 +153,7 @@
 				1C60E5612A7AC45E00C6C59C /* LiveChatGPTApp.swift */,
 				1C8A43F62A93C3EB00BA4465 /* API */,
 				1C8A43F22A93C32600BA4465 /* Chat */,
+				1C08740A2AF2D77700F1BA42 /* Model */,
 				1C8A43F92A93C5D100BA4465 /* Config */,
 				1CBD7A662AD851BA0010EB84 /* Utils */,
 				1CB47B232A7C5DC5007FE145 /* Extensions */,
@@ -178,11 +191,11 @@
 		1C8A43F22A93C32600BA4465 /* Chat */ = {
 			isa = PBXGroup;
 			children = (
+				1C8A43F42A93C3DA00BA4465 /* ChatViewModel.swift */,
 				1C60E5632A7AC45E00C6C59C /* ContentView.swift */,
 				1CBD7A692AD85EDF0010EB84 /* ChatBottomView.swift */,
 				1C0D07AE2ACC8712000128A2 /* TextEditorWithPlaceholder.swift */,
 				1C0D07AC2ACC83A1000128A2 /* MessageView.swift */,
-				1C8A43F42A93C3DA00BA4465 /* ChatViewModel.swift */,
 			);
 			path = Chat;
 			sourceTree = "<group>";
@@ -191,6 +204,7 @@
 			isa = PBXGroup;
 			children = (
 				1C8A43F72A93C44800BA4465 /* APIWorker.swift */,
+				1C08740D2AF2EDF800F1BA42 /* OpenAIDataMapper.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -496,7 +510,9 @@
 				1CBD7A6A2AD85EDF0010EB84 /* ChatBottomView.swift in Sources */,
 				1CB47B252A7C5E2F007FE145 /* String+ext.swift in Sources */,
 				1C62BFAC2ACF21CD006D7FB4 /* Environment.swift in Sources */,
+				1C08740C2AF2D78D00F1BA42 /* MessageModel.swift in Sources */,
 				1C0D07AD2ACC83A1000128A2 /* MessageView.swift in Sources */,
+				1C08740E2AF2EDF800F1BA42 /* OpenAIDataMapper.swift in Sources */,
 				1C8A43F52A93C3DA00BA4465 /* ChatViewModel.swift in Sources */,
 				1C60E5622A7AC45E00C6C59C /* LiveChatGPTApp.swift in Sources */,
 				1C8A43F82A93C44800BA4465 /* APIWorker.swift in Sources */,

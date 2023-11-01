@@ -8,41 +8,49 @@
 import SwiftUI
 
 struct MessageView: View {
-    var message: [String: String]
+//    var message: [String: String]
+    var message: any Message
     
     var messageColor: Color {
-        if message["role"] == "user" {
+        switch message.role {
+        case .user:
             return .blue
-        } else if message["role"] == "assistant" {
+        case .assistant:
             return .green
-        } else {
+        case .unknown:
             return .red
         }
+//        if message["role"] == "user" {
+//            return .blue
+//        } else if message["role"] == "assistant" {
+//            return .green
+//        } else {
+//            return .red
+//        }
     }
     
     var body: some View {
-        if message["role"] != "system" {
+//        if message["role"] != "system" {
             HStack {
-                if message["role"] == "user" {
+                if message.role == .user {
                     Spacer()
                 }
                 
-                
-                Text(message["content"] ?? "error")
+                Text(message.text)
                     .foregroundColor(.white)
                     .padding()
                     .background(messageColor)
                     .clipShape(RoundedRectangle(cornerRadius: 8))
                     .shadow(radius: 1)
                 
-                if message["role"] == "assistant" {
+                if message.role != .user {
                     Spacer()
                 }
             }
-        }
+//        }
     }
 }
 
 #Preview {
-    MessageView(message: ["role": "assistant", "content": "Hello world"])
+    MessageView(message: MessageModel(role: .unknown, text: "Error")) //["role": "assistant", "content": "Hello world"])
 }

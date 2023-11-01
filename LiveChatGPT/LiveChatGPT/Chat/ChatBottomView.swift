@@ -56,7 +56,7 @@ struct ChatBottomView: View {
             } label: {
                 ZStack {
                     Circle()
-                        .foregroundStyle(text.isEmpty ? Color.blue.opacity(0.4) : Color.blue.opacity(0.8))
+                        .foregroundStyle(text.isEmpty ? Color.blue.opacity(0.4) : Color.blue.opacity(1.0))
                     
                     Image(systemName: "paperplane")
                         .resizable()

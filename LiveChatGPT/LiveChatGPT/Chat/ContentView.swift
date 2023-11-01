@@ -8,7 +8,8 @@
 import SwiftUI
 
 struct ContentView: View {
-    @ObservedObject var connector = OpenAIConnector()
+    @ObservedObject var viewModel = ChatViewModel()
+//    @ObservedObject var connector = OpenAIConnector()
 //    @State var text = ""
     
     @FocusState private var isFocused: Bool
@@ -27,7 +28,7 @@ struct ContentView: View {
         ZStack {
             backgroundGradient()
             
-            if connector.messageLog.isEmpty {
+            if viewModel.messages.isEmpty { //.messageLog.isEmpty
                 showStartButton()
                     .onTapGesture {
                         startAnimatingText()
@@ -36,7 +37,7 @@ struct ContentView: View {
             
             VStack {
                 ScrollView {
-                    ForEach(connector.messageLog) { message in
+                    ForEach(viewModel.messages, id: \.id) { message in //connector.messageLog
                         MessageView(message: message)
                     }
                 }
@@ -94,16 +95,20 @@ struct ContentView: View {
     
     @ViewBuilder private func bottomView() -> some View {
         ChatBottomView(isFocused: _isFocused) { text in
-            connector.logMessage(text, messageUserType: .user)
-            connector.sendToAssistant()
+            Task {
+                await viewModel.sendMessage(message: text)
+            }
+            
+//            connector.logMessage(text, messageUserType: .user)
+//            connector.sendToAssistant()
             print("Typed message: \(text)")
         } textFieldAction: {
             startAnimatingText()
         } pickImageAction: {
-            let _ = print("pickImageAction")
+            print("pickImageAction")
         }
         .onChange(of: isFocused) {
-            if !isFocused && connector.messageLog.isEmpty {
+            if !isFocused && viewModel.messages.isEmpty { //connector.messageLog.isEmpty {
                 alreadyAnimated = false
                 withAnimation {
 //                                    pulsate = true

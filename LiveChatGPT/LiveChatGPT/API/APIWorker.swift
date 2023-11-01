@@ -6,30 +6,109 @@
 //
 
 import Foundation
+import Combine
+
+typealias MessageLog = [[String: String]]
 
 class APIWorker {
     private let apiKey: String
-
+    private let openAIURL: URL?
 //    private let HTTPClient
     
 //    func sendMessage(text: String)  async throws -> AsyncThrowingStream<String, Error> {
 //
 //    }
     
-    init(apiKey: String) {
+    init(apiKey: String = Environment.apiKey,
+         url: URL? = URL(string: Environment.baseURL)) {
         self.apiKey = apiKey
+        self.openAIURL = url
+    }
+
+    func send(messageLog: MessageLog) async -> (any Message)? { //, assistantReply: @escaping (Message)->()
+        guard let url = openAIURL else {
+            fatalError("openAIURL is incorrect")
+        }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "POST"
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("Bearer \(apiKey)", forHTTPHeaderField: "Authorization")
+        
+        let httpBody: [String: Any] = [
+            /// Use different type of chat models if needed here.
+            "model": "gpt-3.5-turbo",
+            "messages": messageLog
+        ]
+        
+        
+        var httpBodyJson: Data?
+
+        do {
+            httpBodyJson = try JSONSerialization.data(withJSONObject: httpBody, options: .prettyPrinted)
+        } catch {
+            print("Unable to convert to JSON \(error)")
+            return MessageModel(role: .unknown, text: "Unable convert to JSON")
+        }
+        
+        request.httpBody = httpBodyJson
+        
+        /// Response
+        guard let response = executeRequest(request: request)
+        else {
+            return MessageModel(role: .unknown, text: "Something went wrong")
+        }
+        
+        print(String(data: response, encoding: .utf8) ?? "No data")
+        
+        guard let responseData = try? OpenAIResponse.decode(data: response)
+        else {
+            guard let error = try? ErrorModel.decode(data: response) else {
+                return MessageModel(role: .unknown, text: "Something went wrong")
+            }
+            return MessageModel(role: .unknown, text: error.message ?? "")
+        }
+        
+        return OpenAIDataMapper.map(response: responseData)
     }
     
+    private func executeRequest(request: URLRequest) -> Data? {
+        let semaphore = DispatchSemaphore(value: 0)
+        let session = URLSession.shared
+        
+        var responseData: Data?
+        
+        let task = session.dataTask(with: request) { data, response, error in
+            if let error = error {
+                print("error: \(error.localizedDescription)")
+            }
+            
+            if let data = data {
+                responseData = data
+            }
+            
+            print("Semaphore signalled")
+            semaphore.signal()
+        }
+        task.resume()
+        
+        // Handle async with semaphores. Max wait of 20 seconds
+        let timeout = DispatchTime.now() + .seconds(20)
+        print("Waiting for semaphore signal")
+        let retVal = semaphore.wait(timeout: timeout)
+        print("Done waiting, obtained - \(retVal)")
+        
+        return responseData
+    }
 }
 
-import Combine
-
+/*
 class OpenAIConnector: ObservableObject {
     
     let openAIURL = URL(string: Environment.baseURL)
     let openAIKey = Environment.apiKey
     
-    @Published var messageLog: [[String: String]] = [
+    @Published var messageLog: MessageLog = [
 //        ["role": "assistant", "content": "Hello! How can I help you?"],
 //        ["role": "user", "content": "You're a friendly, helpful assistant"]
     ]
@@ -80,12 +159,12 @@ class OpenAIConnector: ObservableObject {
 
     }
 }
-
+ */
 
 extension Dictionary: Identifiable { public var id: UUID { UUID() } }
 extension Array: Identifiable { public var id: UUID { UUID() } }
 extension String: Identifiable { public var id: UUID { UUID() } }
-
+/*
 extension OpenAIConnector {
     private func executeRequest(request: URLRequest) -> Data? {
         let semaphore = DispatchSemaphore(value: 0)
@@ -119,22 +198,18 @@ extension OpenAIConnector {
 
 extension OpenAIConnector {
     func logMessage(_ message: String, messageUserType: MessageUserType) {
-        var messageUserTypeString = ""
-        switch messageUserType {
-        case .user:
-            messageUserTypeString = "user"
-        case .assistant:
-            messageUserTypeString = "assistant"
-        }
+//        var messageUserTypeString = ""
+//        switch messageUserType {
+//        case .user:
+//            messageUserTypeString = "user"
+//        case .assistant:
+//            messageUserTypeString = "assistant"
+//        }
         
-        messageLog.append(["role": messageUserTypeString, "content": message])
-    }
-    
-    enum MessageUserType {
-        case user
-        case assistant
+        messageLog.append(["role": messageUserType.rawValue, "content": message])
     }
 }
+*/
 
 struct OpenAIResponse: Codable {
     var id: String?
